@@ -1,0 +1,108 @@
+﻿@model List<OtelProject.Data.Models.Odalar>
+@{
+    ViewBag.Menu = "OdaListe";
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="page-bar">
+            <div class="page-title-breadcrumb">
+                <div class=" pull-left">
+                    <div class="page-title">Odalar</div>
+                </div>
+                <ol class="breadcrumb page-breadcrumb pull-right">
+                    <li>
+                        <i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="index-2.html">Anasayfa</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li>
+                        <a class="parent-item" href="#">Odalar</a>&nbsp;<i class="fa fa-angle-right"></i>
+                    </li>
+                    <li class="active">Odalar</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-box">
+                    <div class="card-head">
+                        <header>All Bookings</header>
+                        <div class="tools">
+                            <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                            <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                            <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+                        </div>
+                    </div>
+                    <div class="card-body ">
+                        <div class="row p-b-20">
+                            <div class="col-md-6 col-sm-6 col-6">
+                                <div class="btn-group">
+                                    <a href="~/yonetim/Odalar/YeniOda/0" id="addRow" class="btn btn-info">
+                                        Yeni Ekle <i class="fa fa-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-scrollable">
+                            <table class="table table-hover table-checkable order-column full-width" id="example4">
+                                <thead>
+                                    <tr>
+                                        <th class="center"> # </th>
+                                        <th class="center"> Oda Adı </th>
+                                        <th class="center"> Oda No </th>
+                                        <th class="center"> Oda Tipi </th>
+                                        <th class="center"> Oda Ücreti </th>
+                                        <th class="center"> Cephe </th>
+                                        <th class="center"> Yatak Sayısı </th>
+                                        <th class="center"> İşlem </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="odd gradeX">
+                                            <td class="center">@item.Idno</td>
+                                            <td class="center">@item.OdaAdi</td>
+                                            <td class="center">@item.OdaNo</td>
+                                            <td class="center">@item.OdaTips.Baslik</td>
+                                            <td class="center">@item.OdaTips.Ucret</td>
+                                            <td class="center">@item.Cephe</td>
+                                            <td class="center">@item.YatakSayisi</td>
+                                            <td class="center">
+                                                <a href="~/yonetim/Odalar/YeniOda/@item.Idno" class="btn btn-tbl-edit btn-xs" title="Düzenle">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                                <a href="~/yonetim/Odalar/OdaResimler/@item.Idno" class="btn btn-tbl-edit btn-xs" title="Resim Ekle">
+                                                    <i class="fa fa-file-picture-o"></i>
+                                                </a>
+                                                <a href="~/yonetim/Odalar/OzellikEkle/@item.Idno" class="btn btn-tbl-edit btn-xs" title="Özellik Ekle">
+                                                    <i class="fa fa-cogs"></i>
+                                                </a>
+                                                <a href="~/yonetim/Odalar/OdaSil/@item.Idno" class="btn btn-tbl-delete btn-xs" title="Sil">
+                                                    <i class="fa fa-trash-o "></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Head {
+    <link href="~/admin/assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+}
+
+@section Scripts {
+    <script src="~/admin/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/admin/assets/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.js"></script>
+    <script src="~/admin/assets/js/pages/table/table_data.js"></script>
+}

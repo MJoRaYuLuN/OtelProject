@@ -1,0 +1,116 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+@await Component.InvokeAsync("Main")
+@await Component.InvokeAsync("Hakkimizda")
+@await Component.InvokeAsync("Odalar")
+@await Component.InvokeAsync("Iletisim")
+
+
+
+
+
+@section Scripts {
+    <script>
+        function rezerveEt() {
+            var tarih = $('#check_in').val();
+            var odatip = $('#room_type').val();
+            var pansiyon = $('#pansion').val();
+            var telefon = $('#telefon').val();
+            var yetiskin = $('#quantity').val();
+            var cocuk = $('#child').val();
+            $("#submit-check").html("<i class=\"fas fa-sync fa-spin me-2\"></i> BEKLEYİNİZ");
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "get",
+                url: '@Url.Action("Rezervasyon", "Home")',
+                data: {
+                    'tarih': tarih,
+                    'odatip': odatip,
+                    'pansiyon': pansiyon,
+                    'telefon': telefon,
+                    'yetiskin': yetiskin,
+                    'cocuk': cocuk
+                },
+                success: function (data) {
+                    if (data != null) {
+                        var result = data.split('-');
+                        var idno = result[0];
+                        var ucreti = result[1];
+                        Swal.fire({
+                            title: "Fiyatınız",
+                            text: ucreti+" ücretle rezerve etmek istediğinize emin misiniz?",
+                            icon: "question",
+                            showCancelButton: !0,
+                            confirmButtonText: "Evet, Rezerve Et!",
+                            cancelButtonText: "Hayır, İptal Et!",
+                            confirmButtonClass: "btn btn-success mt-2",
+                            cancelButtonClass: "btn btn-danger ms-2 mt-2",
+                            buttonsStyling: !1
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+
+
+                                $.ajax({
+                                    contentType: "application/json",
+                                    dataType: "json",
+                                    type: "get",
+                                    url: '@Url.Action("RezervasyonIslem", "Home")',
+                                    data: {
+                                        'idno': idno,
+                                        'durum':1
+                                    },
+                                    success: function (data) {
+                                        if (data != null) {
+
+
+                                            $("#submit-check").html("REZERVASYON YAP");
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'Tebrikler',
+                                                confirmButtonText: "Tamam",
+                                                text: 'Rezervasyonunuz Başarıyla Oluşturuldu'
+                                            })
+
+                                        }
+                                    }
+                                });
+
+                            } else if (result.isDismissed) {
+
+
+                                $.ajax({
+                                    contentType: "application/json",
+                                    dataType: "json",
+                                    type: "get",
+                                    url: '@Url.Action("RezervasyonIslem", "Home")',
+                                    data: {
+                                        'idno': idno,
+                                        'durum': 0
+                                    },
+                                    success: function (data) {
+                                        if (data != null) {
+
+                                            $("#submit-check").html("REZERVASYON YAP");
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'Tamamlandı',
+                                                confirmButtonText: "Tamam",
+                                                text: 'Rezervasyonunuz İptal Edildi'
+                                            })
+                                        }
+                                    }
+                                });
+
+
+                            }
+                        })
+                    } // DATA NULL (RESULT) DEĞİLSE
+                } //SUCCESS DATANIN
+            });  //AJAX BAŞLANGIÇ
+        } // ONCLİCK
+    </script>
+}

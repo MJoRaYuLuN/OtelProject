@@ -1,0 +1,91 @@
+﻿@model OtelProject.ViewModels.Site.MailViewModel
+
+
+<div id="main">
+    <div class="container">
+        <div id="logo"><img src="~/site/img/logo.png" alt=""></div>
+        <div class="row">
+            <div class="col-md-12">
+                <h1>OPEN OTELE HOŞ GELDİNİZ</h1>
+                <h2>Sınırsız imkanlarla konaklama yapmak için hemen <strong>rezervasyon yaptırın</strong>.</h2>
+            </div>
+        </div>
+        <div id="purchase"></div>
+        <div id="lang">
+        </div>
+
+        <div id="book">
+            <div class=" row">
+                <div class="col-md-2 col-sm-3 first-nogutter dates" id="jrange">
+                    <input type="text" class="form-control datepicker" id="check_in" name="check_in" placeholder="Tarih">
+                    <div class="ll-skin-latoja"></div>
+                    <span class="input-icon"><i class=" icon-calendar"></i></span>
+                </div>
+
+                <div class="col-md-2 col-sm-2 nogutter">
+                    <div class="styled-select">
+                        <select class="form-control " name="room_type" id="room_type">
+                            <option value="" selected>Oda Tipi</option>
+                            @foreach (var item in Model.odaTips)
+                            {
+                <option value="@item.Idno">@item.Baslik</option>
+}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-sm-2 nogutter">
+                    <div class="styled-select">
+                        <select class="form-control " name="room_type" id="pansion">
+                            <option value="" selected>Pansiyon</option>
+                            @foreach (var item in Model.Pansiyons)
+                            {
+                <option value="@item.Idno">@item.Baslik</option>
+}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-sm-3 nogutter">
+                    <input type="text" class=" form-control" id="telefon" name="telefon" placeholder="Telefon">
+                    <span class="input-icon"><i class="icon-phone"></i></span>
+                </div>
+                <div class="col-md-4 col-sm-4 nogutter">
+                    <div class="qty-buttons">
+                        <input type="button" value="+" class="qtyplus" name="quantity">
+                        <input type="text" name="quantity" id="quantity" value="" class="qty form-control required" placeholder="Yetişkin">
+                        <input type="button" value="-" class="qtyminus" name="quantity">
+                    </div>
+                    <div class="qty-buttons margin">
+                        <input type="button" value="+" class="qtyplus" name="child">
+                        <input type="text" name="child" id="child" value="" class="qty form-control required" placeholder="Çocuk">
+                        <input type="button" value="-" class="qtyminus" name="child">
+                    </div>
+                </div>
+
+                <button type="button" class="btn-check" id="submit-check" onclick="rezerveEt()" style="width: 200px !important;">REZERVASYON YAP</button>
+            </div>
+            <div id="message-booking"></div>
+        </div><!-- End book -->
+
+    </div><!-- End container -->
+
+    <nav>
+        <ul class="menu">
+            <li><a href="#" id="modal-rooms-open">Odalar</a></li>
+            <li><a href="#" id="modal-about-open">Hakkımızda</a></li>
+            <li><a href="#" id="modal-contacts-open">İletişim</a></li>
+        </ul>
+        <ul id="contact_follow">
+            <li><a href="#"><span class="icon-facebook text-facebook"></span></a></li>
+            <li><a href="#"><span class="icon-twitter text-twitter"></span></a></li>
+            <li><a href="#"><span class=" icon-instagram text-instagram"></span></a></li>
+        </ul>
+    </nav>
+
+</div><!-- End main -->
+
+
+
+   
+

@@ -1,0 +1,129 @@
+﻿@model List<OtelProject.ViewModels.Site.OdalarViewModel>
+
+
+<div id="modal-offers">
+    <a href="#" class="modal-close"><i class=" icon-cancel-circled-outline"></i></a>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-12 ">
+                <h3>Our rooms</h3>
+
+
+                @foreach (var item in Model)
+                {
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="photo_polaroid">
+                                <div class="carousel">
+                                    @foreach (var resim in item.OdaResimler)
+                                    {
+                                        <div class="item"><img src="~/uploads/@resim.Resim" alt="" class="img-responsive"></div>
+                                    }
+                                </div><!-- End carousel -->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>@item.OdaAdi <strong>@item.Fiyat</strong><span> @item.Cephe Cepheli | @item.YatakSayisi Yataklı</span></h4>
+                            <p class="text-center">
+                                @item.Aciklama
+                            </p>
+                            <ul class="rooms_info">
+                                @foreach (var ozellik in item.OdaOzellikler)
+                                {
+                                    <li><i class="@ozellik.Ikon"></i> @ozellik.Baslik</li>
+                                }
+                            </ul>
+                            <p><a href="#" class="modal-close booking">Book now</a></p>
+                        </div>
+                    </div>
+                    <hr>
+                }
+
+                
+
+
+                @*<div class="row">
+                    <div class="col-md-12">
+
+                        <h3 style="margin-top:30px">Prices</h3>
+                        <table class="table" style="margin-bottom:60px;">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Room Type
+                                    </th>
+                                    <th>
+                                        Low (23/03 to 31/05)
+                                    </th>
+                                    <th>
+                                        Middle (23/03 to 31/05)
+                                    </th>
+                                    <th>
+                                        High (23/03 to 31/05)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Single room
+                                    </td>
+                                    <td>110$</td>
+                                    <td>120$</td>
+                                    <td>140$</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Double room
+                                    </td>
+                                    <td>
+                                        150$
+                                    </td>
+                                    <td>
+                                        150$
+                                    </td>
+                                    <td>
+                                        180$
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        King Double room
+                                    </td>
+                                    <td>
+                                        180$
+                                    </td>
+                                    <td>
+                                        150$
+                                    </td>
+                                    <td>
+                                        180$
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Luxury room
+                                    </td>
+                                    <td>
+                                        190$
+                                    </td>
+                                    <td>
+                                        150$
+                                    </td>
+                                    <td>
+                                        180$
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>*@
+
+
+            </div><!-- End col-md-12 -->
+
+        </div><!-- End row -->
+    </div><!-- End conainer -->
+</div><!-- End modal -->

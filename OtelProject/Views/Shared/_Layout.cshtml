@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="~/site/img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.html">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="~/site/img/apple-touch-icon-72x72-precomposed.html">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="~/site/img/apple-touch-icon-114x114-precomposed.html">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="~/site/img/apple-touch-icon-144x144-precomposed.png">
+
+    <!-- CSS -->
+    <link href="~/site/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/site/css/jquery-ui-1.10.1.css" rel="stylesheet">
+    <link href="~/site/css/style.css" rel="stylesheet">
+    <link href="~/site/css/site.css" rel="stylesheet" />
+    <link href="~/site/fontello/css/fontello.css" rel="stylesheet">
+    <link href="~/site/fontello/css/animation.css" rel="stylesheet">
+    <link href="~/site/css/weather.css" rel="stylesheet">
+
+    <!-- Owl Carousel Assets -->
+    <link href="~/site/css/owl.carousel.css" rel="stylesheet">
+    <link href="~/site/css/owl.theme.css" rel="stylesheet">
+    <link href="~/admin/assets/plugins/sweet-alert/sweetalert2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+    <!--[if lt IE 9]>
+      <script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="http://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="preloader">
+        <div id="status"><img src="img/logo.png" alt=""></div>
+    </div>
+
+    <div id="wrapper">
+
+
+        @RenderBody()
+    </div>
+    <div id="slides">
+        <ul class="slides-container">
+            <li><img src="~/site/img/slide_1.jpg" alt=""></li>
+            <li><img src="~/site/img/slide_2.jpg" alt=""></li>
+            <li><img src="~/site/img/slide_3.jpg" alt=""></li>
+            <li><img src="~/site/img/slide_4.jpg" alt=""></li>
+        </ul>
+    </div>
+
+
+    <script src="~/site/js/jquery-1.10.2.min.js"></script>
+    <script src="~/site/js/jquery-ui-1.10.1.min.js"></script>
+    <script src="~/site/js/calendar_func.js"></script>
+    <script src="~/site/js/jquery.easing.1.3.min.js"></script>
+    <script src="~/site/js/jquery.superslides.min.js"></script>
+    <script type="text/javascript">
+        $('#slides').superslides({
+            play: 6000,
+            pagination: false,
+            animation_speed: 800,
+            animation: 'fade'
+        });
+    </script>
+
+    <!-- OTHER JS -->
+    <script src="~/site/js/retina.min.js"></script>
+    <script src="~/site/js/jquery.placeholder.min.js"></script>
+    <script src="~/site/js/functions.js"></script>
+    <script src="~/site/assets/validate.js"></script>
+
+    <!-- CAROUSEL -->
+    <script src="~/site/js/owl.carousel.min.js"></script>
+    <script>
+        //Carousel
+        $(document).ready(function () {
+            "use strict";
+            //Carousel
+            $(".carousel").owlCarousel({
+                items: 1,
+                singleItem: true,
+                responsive: true,
+                autoHeight: true,
+                transitionStyle: "fade"
+            });
+        });
+    </script>
+
+    <!-- GOOGLE MAP -->
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBGMe_ft60Kl3rgjBoAuvnm0HDi0LlzkoE"></script>
+    <script type="text/javascript" src="~/site/js/mapmarker.jquery.js"></script>
+    <script src="~/admin/assets/plugins/sweet-alert/sweetalert2.all.min.js"></script>
+
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
