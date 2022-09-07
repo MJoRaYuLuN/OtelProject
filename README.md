@@ -2,7 +2,7 @@
 .Net Core 3.1 ve MySQL ile oluşturulmuş basit bir Otel Rezervasyon Sistemidir.
 
 
-<strong>.Net Core 3.1</strong> ve <strong>MySQL/strong> ile oluşturulmuş basit bir <i>Otel Rezervasyon</i> Sistemidir.
+<strong>.Net Core 3.1</strong> ve <strong>MySQL</strong> ile oluşturulmuş basit bir <i>Otel Rezervasyon</i> Sistemidir.
 
 <h2 align="left">Bana Ulaşmak İçin;</h2>
 
